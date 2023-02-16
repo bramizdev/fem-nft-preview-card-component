@@ -95,8 +95,6 @@ Since this was a link I used a ```<a>``` tag as a container, because I thought w
   opacity: 1;
   background-color: var(--clr-primary-500-op);
 }
-
-}
 ```
 
 ## Author
