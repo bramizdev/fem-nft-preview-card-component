@@ -1,0 +1,275 @@
+/* Custom properties */
+:root {
+  --clr-primary-300: hsl(215, 51%, 70%);
+  --clr-primary-500: hsl(178, 100%, 50%);
+
+  --clr-primary-500-op: hsla(178, 100%, 50%, 0.5);
+
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-neutral-700: hsl(215, 32%, 27%); /* line */
+  --clr-neutral-800: hsl(216, 50%, 16%); /* card bg */
+  --clr-neutral-900: hsl(217, 54%, 11%); /* main bg */
+
+  --ff-base: 'Outfit', sans-serif;
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-bold: 600;
+
+  --fs-text-base: 1rem;
+}
+
+/* CSS Reset */
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+  padding: 0;
+}
+/*
+  3. Allow percentage-based heights in the application
+*/
+html,
+body {
+  height: 100vh;
+}
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  6. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+/*
+  7. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+  8. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/* 9. Remove decoration from anchor tags */
+a {
+  text-decoration: none;
+}
+
+/* General styling */
+body {
+  background-color: var(--clr-neutral-900);
+  font-family: var(--ff-base);
+  color: var(--clr-primary-300);
+  font-size: var(--fs-text-base);
+  font-weight: var(--fw-light);
+  padding: 1.5rem;
+  display: grid;
+  place-items: center;
+}
+
+/* Utility classes */
+.visually-hidden:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.flex-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-highlight {
+  color: var(--clr-neutral-100);
+}
+
+.icon-position {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Card */
+.card {
+  --card-padding: 1.5rem;
+  --card-grid-gap: 1.25rem;
+
+  background-color: var(--clr-neutral-800);
+  padding: var(--card-padding);
+  border-radius: 1rem;
+  display: grid;
+  gap: var(--card-grid-gap);
+  max-width: 350px;
+}
+
+@media (min-width: 648px) {
+  .card {
+    --card-grid-gap: 1.35rem;
+  }
+}
+
+.card__url:hover :first-child,
+.card__url:focus :first-child {
+  color: var(--clr-primary-500);
+}
+
+.card__img {
+  border-radius: 0.5rem;
+}
+
+.card__url-container {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  background-color: var(--clr-primary-500);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  border-radius: 0.5rem;
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.card__url-container:hover .overlay {
+  opacity: 1;
+  background-color: var(--clr-primary-500-op);
+}
+
+.card__info {
+  --card-info-gap: 0.6rem;
+  display: grid;
+  gap: var(--card-info-gap);
+}
+
+@media (min-width: 648px) {
+  .card__info {
+    --card-info-gap: 0.6rem;
+  }
+}
+
+.card__title {
+  font-size: 1.4rem;
+  color: var(--clr-neutral-100);
+}
+
+.card__auction-details {
+  --card-auction-fs: 0.95rem;
+  border-bottom: 1px solid var(--clr-neutral-700);
+  padding: 0.25rem 0 0.75rem 0;
+}
+
+@media (min-width: 648px) {
+  .card__auction-details {
+    padding: 1rem 0 1.35rem 0;
+  }
+}
+
+.card__price {
+  font-size: var(--card-auction-fs);
+  color: var(--clr-primary-500);
+  font-weight: var(--fw-bold);
+}
+
+.card__price[data-icon='ethereum']::before {
+  content: '';
+  width: 11px;
+  height: 18px;
+  background: url('../images/icon-ethereum.svg');
+}
+
+.card__left-time {
+  font-size: var(--card-auction-fs);
+}
+.card__left-time[data-icon='clock']::before {
+  content: '';
+  width: 17px;
+  height: 17px;
+  background: url('../images/icon-clock.svg');
+}
+
+.card__creator-details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+
+@media (min-width: 648px) {
+  .card__creator-details {
+    padding-bottom: 0.4rem;
+  }
+}
+
+.card__creator-avatar {
+  height: 2rem;
+  width: 2rem;
+  border: 1px solid var(--clr-neutral-100);
+  border-radius: 50%;
+}
+
+.footer {
+  text-align: center;
+}
+
+.footer a {
+  color: var(--clr-neutral-100);
+}
+
+.footer a:is(:hover, :focus) {
+  color: var(--clr-primary-500);
+}
+
+@media (min-width: 648px) {
+  .footer {
+    position: absolute;
+    bottom: 0;
+    padding: 1rem;
+  }
+}
