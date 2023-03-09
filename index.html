@@ -31,7 +31,11 @@
     <main>
       <h1 class="visually-hidden">NFT preview card component</h1>
       <article class="card">
-        <a href="#" class="card__url-container">
+        <a
+          href="#"
+          class="card__url-container"
+          aria-label="See more about Equilibrium 3429"
+        >
           <img
             src="./images/image-equilibrium.jpg"
             alt="A transparent cube balanced in one of its corners in a dark blue background promoting balance and calm"
@@ -52,7 +56,7 @@
           </p>
           <div class="card__auction-details flex-group">
             <p class="card__price icon-position" data-icon="ethereum">
-              0.041 <abbr title="Ethereum">ETH</abbr>
+              0.041 <abbr title="Ethereum" aria-label="Ethereum">ETH</abbr>
             </p>
             <p class="card__left-time icon-position" data-icon="clock">
               3 days left
@@ -61,7 +65,7 @@
           <div class="card__creator-details">
             <img
               src="./images/image-avatar.png"
-              alt="Jules Wyvern creator of Equilibrium #3429 in the shadows"
+              alt="a portrait of Jules Wyvern creator of this NFT"
               height="132"
               width="132"
               class="card__creator-avatar"
